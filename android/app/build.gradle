@@ -1,0 +1,44 @@
+plugins {
+    id "com.android.application"
+    // START: FlutterFire Configuration
+    id 'com.google.gms.google-services'
+    // END: FlutterFire Configuration
+    id "kotlin-android"
+    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+android {
+    namespace = "com.weather.app"
+    compileSdk = 34 // Set this to at least 33 (latest stable SDK version)
+
+    ndkVersion = flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        // Ensure this is the correct unique application ID for your app
+        applicationId = "com.weather.app"
+        minSdk = 23 // The minimum SDK your app supports, you can keep this or adjust if needed
+        targetSdk = 31  // Target SDK should be at least 31 as per Google Play Store requirements
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
+    }
+
+    buildTypes {
+        release {
+            signingConfig = signingConfigs.debug  // Add a proper signing config for release if needed
+        }
+    }
+}
+
+flutter {
+    source = "../.."  // Ensure this is the correct path to your Flutter source
+}
